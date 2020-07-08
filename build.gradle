@@ -1,0 +1,31 @@
+plugins {
+    id 'com.gradle.plugin-publish' version '0.12.0'
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://plugins.gradle.org/m2/' }
+}
+
+apply plugin: 'java-gradle-plugin'
+
+group 'cn.shlxs.docker'
+
+dependencies {
+    compile gradleApi()
+    implementation("com.palantir.docker:com.palantir.docker.gradle.plugin:0.25.0")
+}
+
+pluginBundle {
+    website = 'https://github.com/shlxs/docker-boot'
+    vcsUrl = 'https://github.com/shlxs/docker-boot'
+    description = 'Gradle Docker is a simple docker orchestrator for executing docker build and push from within Gradle.'
+    tags = ['docker']
+
+    plugins {
+        dockerBootPlugin {
+            id = 'cn.shlxs.docker'
+            displayName = 'Gradle Docker Boot'
+        }
+    }
+}
